@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Mohd Ravish – Academic Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --navy: #0f2a45;
+    --navy-mid: #1a3a5c;
+    --blue: #2d6a9f;
+    --blue-light: #4a8fc1;
+    --accent: #c8a45a;
+    --cream: #faf8f4;
+    --white: #ffffff;
+    --text: #1a1a2e;
+    --text-muted: #5a6272;
+    --border: #e0ddd6;
+    --bg-soft: #f4f2ee;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    background: var(--navy);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2.5rem;
+    height: 62px;
+    border-bottom: 1px solid rgba(200,164,90,0.3);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    color: var(--accent);
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+  nav ul { list-style: none; display: flex; gap: 2rem; }
+  nav ul li a {
+    color: #a8c8e8;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  nav ul li a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    background: var(--navy);
+    color: #fff;
+    padding: 4rem 2.5rem 3.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 340px; height: 340px;
+    border-radius: 50%;
+    border: 1px solid rgba(200,164,90,0.15);
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -40px;
+    width: 260px; height: 260px;
+    border-radius: 50%;
+    border: 1px solid rgba(200,164,90,0.08);
+  }
+  .hero-inner { max-width: 860px; margin: 0 auto; display: flex; gap: 2.5rem; align-items: center; flex-wrap: wrap; position: relative; z-index: 1; }
+  .hero-avatar {
+    width: 110px; height: 110px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2d6a9f, #4a8fc1);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 38px; font-weight: 700;
+    color: #fff;
+    border: 3px solid var(--accent);
+    flex-shrink: 0;
+    letter-spacing: 1px;
+  }
+  .hero-text h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+  }
+  .hero-text .subtitle {
+    font-size: 15px;
+    color: #a8c8e8;
+    margin-top: 6px;
+  }
+  .hero-text .cpi {
+    font-size: 13px;
+    color: var(--accent);
+    margin-top: 4px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .hero-tag {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(200,164,90,0.35);
+    color: #e0d4b8;
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.3px;
+  }
+  .contact-bar {
+    background: #0c2236;
+    padding: 10px 2.5rem;
+    display: flex; gap: 2rem; flex-wrap: wrap;
+    border-bottom: 1px solid rgba(200,164,90,0.2);
+  }
+  .contact-bar a, .contact-bar span {
+    color: #a8c8e8;
+    font-size: 13px;
+    text-decoration: none;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .contact-bar a:hover { color: var(--accent); }
+
+  /* SECTIONS */
+  .container { max-width: 860px; margin: 0 auto; }
+  section { padding: 2.5rem 2.5rem; border-bottom: 1px solid var(--border); }
+  section:last-of-type { border-bottom: none; }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--accent), transparent);
+  }
+
+  /* ABOUT */
+  .about-text {
+    font-size: 15px;
+    line-height: 1.85;
+    color: var(--text-muted);
+    max-width: 720px;
+  }
+
+  /* EDUCATION */
+  .edu-item {
+    display: flex; gap: 1.2rem; margin-bottom: 1.4rem; align-items: flex-start;
+  }
+  .edu-icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    background: var(--navy);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; flex-shrink: 0;
+  }
+  .edu-body h3 { font-size: 15px; font-weight: 600; color: var(--navy); }
+  .edu-body p { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
+  .rank-badge {
+    display: inline-block;
+    font-size: 12px;
+    background: #fdf3dc;
+    color: #7a5c10;
+    border: 1px solid #e8cc82;
+    padding: 2px 10px;
+    border-radius: 20px;
+    margin-top: 5px;
+    font-weight: 500;
+  }
+
+  /* RESEARCH INTERESTS */
+  .interests { display: flex; flex-wrap: wrap; gap: 10px; }
+  .interest-tag {
+    background: var(--navy);
+    color: #a8c8e8;
+    font-size: 13px;
+    padding: 6px 16px;
+    border-radius: 6px;
+    border-left: 3px solid var(--accent);
+    letter-spacing: 0.2px;
+  }
+
+  /* PROJECT CARDS */
+  .project-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--blue);
+    border-radius: 10px;
+    padding: 1.2rem 1.4rem;
+    margin-bottom: 1rem;
+  }
+  .project-card h3 { font-size: 15px; font-weight: 600; color: var(--navy); line-height: 1.4; }
+  .project-card .org { font-size: 12px; color: var(--blue); font-weight: 500; margin-top: 4px; letter-spacing: 0.2px; }
+  .project-card ul { margin-top: 10px; padding-left: 1.3rem; }
+  .project-card ul li { font-size: 13px; color: var(--text-muted); margin-bottom: 4px; line-height: 1.6; }
+  .outcome-badge {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 12px;
+    background: #eaf5e9;
+    color: #2a6b27;
+    border: 1px solid #b2ddb0;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-weight: 500;
+  }
+
+  /* SKILLS */
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1rem; }
+  .skill-group {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem 1.2rem;
+  }
+  .skill-group h4 {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--navy);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .skill-tag {
+    font-size: 12px;
+    background: #eaf1f8;
+    color: #1a4a72;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+
+  /* AWARDS */
+  .awards-list { list-style: none; }
+  .awards-list li {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    color: var(--text-muted);
+  }
+  .awards-list li:last-child { border-bottom: none; }
+  .award-icon { font-size: 20px; flex-shrink: 0; line-height: 1.4; }
+
+  /* ACTIVITIES */
+  .activity-item { margin-bottom: 1.2rem; }
+  .activity-item h4 { font-size: 15px; font-weight: 600; color: var(--navy); }
+  .activity-item p { font-size: 13px; color: var(--text-muted); margin-top: 4px; line-height: 1.6; }
+
+  /* CONTACT */
+  .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.2rem; }
+  .contact-item { display: flex; gap: 12px; align-items: flex-start; }
+  .c-icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    background: var(--navy);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; flex-shrink: 0;
+  }
+  .contact-item h4 { font-size: 12px; color: var(--text-muted); font-weight: 500; text-transform: uppercase; letter-spacing: 0.8px; }
+  .contact-item p, .contact-item a { font-size: 14px; color: var(--text); font-weight: 500; margin-top: 2px; text-decoration: none; }
+  .contact-item a:hover { color: var(--blue); }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy);
+    color: #6a8aaa;
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 13px;
+  }
+  footer span { color: var(--accent); }
+
+  @media (max-width: 600px) {
+    nav ul { display: none; }
+    .hero { padding: 2.5rem 1.5rem; }
+    section { padding: 2rem 1.5rem; }
+    .contact-bar { padding: 10px 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Mohd Ravish</div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#awards">Awards</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-avatar">MR</div>
+    <div class="hero-text">
+      <h1>Mohd Ravish</h1>
+      <p class="subtitle">B.Tech – Mechanical Engineering &nbsp;|&nbsp; ZHCET, Aligarh Muslim University</p>
+      <p class="cpi">CPI: 9.09 / 10 &nbsp;·&nbsp; Dept. Rank: 2nd out of 90 &nbsp;·&nbsp; Aligarh, India</p>
+      <div class="hero-tags">
+        <span class="hero-tag">Solid Mechanics</span>
+        <span class="hero-tag">Structural Mechanics</span>
+        <span class="hero-tag">Fracture Mechanics</span>
+        <span class="hero-tag">Elastodynamics & Vibrations</span>
+        <span class="hero-tag">Nonlinear Dynamics</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="contact-bar">
+  <span>📞 +91-9149311551</span>
+  <span>✉️ gk1450@myamu.ac.in</span>
+  <a href="https://linkedin.com/in/mohd-ravish-608050225" target="_blank">🔗 linkedin.com/in/mohd-ravish-608050225</a>
+</div>
+
+<div class="container">
+
+  <section id="about">
+    <div class="section-title">About Me</div>
+    <p class="about-text">I am a final-year B.Tech student in Mechanical Engineering at ZHCET, Aligarh Muslim University, with a CPI of 9.09/10 and a department rank of 2nd out of 90 students. My academic journey reflects a deep commitment to excellence — I previously secured 1st rank in my Diploma in Mechanical Engineering with 90.24%. My research interests span solid mechanics, structural mechanics, elastodynamics, fracture mechanics, and nonlinear dynamics. I have hands-on research experience from IIT Kanpur and strong expertise in FEA tools, CAD software, and scientific programming.</p>
+  </section>
+
+  <section id="education">
+    <div class="section-title">Education</div>
+    <div class="edu-item">
+      <div class="edu-icon">🎓</div>
+      <div class="edu-body">
+        <h3>B.Tech – Mechanical Engineering</h3>
+        <p>ZHCET, Aligarh Muslim University, India &nbsp;·&nbsp; Dec 2021 – Jun 2025</p>
+        <p>CPI: 9.09/10 &nbsp;(equivalent to 3.824/4.00 GPA)</p>
+        <span class="rank-badge">🥈 Dept. Rank: 2nd out of 90 students</span>
+      </div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-icon">🎓</div>
+      <div class="edu-body">
+        <h3>Diploma – Mechanical Engineering</h3>
+        <p>University Polytechnic, Aligarh Muslim University, India &nbsp;·&nbsp; Aug 2018 – Jun 2021</p>
+        <p>Percentage: 90.24%</p>
+        <span class="rank-badge">🥇 Dept. Rank: 1st out of 120 students</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="research">
+    <div class="section-title">Research Interests</div>
+    <div class="interests" style="margin-bottom: 2rem;">
+      <span class="interest-tag">Solid Mechanics</span>
+      <span class="interest-tag">Structural Mechanics</span>
+      <span class="interest-tag">Elastodynamics & Vibrations</span>
+      <span class="interest-tag">Fracture Mechanics</span>
+      <span class="interest-tag">Nonlinear Dynamics</span>
+    </div>
+
+    <div class="section-title">Research Projects</div>
+
+    <div class="project-card">
+      <h3>Vibration Damping of a Fast-Rotating Disc for an Electrodynamic Suspension System</h3>
+      <div class="org">Research Intern – IIT Kanpur, Department of Aerospace Engineering</div>
+      <ul>
+        <li>Investigated vibration damping of a rotating disc used in an electrodynamic suspension system.</li>
+        <li>Conducted accelerometer-based vibration measurements and performed signal processing using MATLAB.</li>
+        <li>Designed a passive vibration isolation system to minimize vibration transmission.</li>
+      </ul>
+      <span class="outcome-badge">✅ Outcome: 65% reduction in vibration transmission, improving system stability</span>
+    </div>
+
+    <div class="project-card">
+      <h3>Modelling and Analysis of Faults in Rolling Element Bearings</h3>
+      <div class="org">B.Tech Final Year Project – Dept. of Mechanical Engineering, AMU Aligarh</div>
+      <ul>
+        <li>Developed an impact force-based vibration model for outer race defects and generated vibration response in MATLAB.</li>
+        <li>Introduced EDM-induced defects and conducted experiments on a Rolling Bearing Test Rig using accelerometer and DAQ system.</li>
+        <li>Validated the model by comparing experimental and simulation vibration signatures.</li>
+      </ul>
+    </div>
+
+    <div class="project-card">
+      <h3>A Moving Mass Hitting a Stationary Spring–Mass System</h3>
+      <div class="org">Course Project: Mechanical Vibrations – Dept. of Mechanical Engineering, AMU Aligarh</div>
+      <ul>
+        <li>Modeled a dynamic system involving a moving mass colliding with a spring–mass system.</li>
+        <li>Derived governing equations of motion using Newton's laws and a variational approach.</li>
+        <li>Solved numerically using 4th-order Runge-Kutta method in MATLAB for various initial velocities and mass configurations.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="section-title">Skills</div>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <h4>FEA Software</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">Abaqus</span>
+          <span class="skill-tag">Ansys</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>CAD Software</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">AutoCAD</span>
+          <span class="skill-tag">SolidWorks</span>
+          <span class="skill-tag">PTC Creo</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Programming</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">MATLAB</span>
+          <span class="skill-tag">Python</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Others</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">Microsoft Excel</span>
+          <span class="skill-tag">LaTeX</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="awards">
+    <div class="section-title">Honors & Awards</div>
+    <ul class="awards-list">
+      <li><span class="award-icon">🥇</span> Gold Medal for securing 1st rank in Diploma in Mechanical Engineering, AMU</li>
+      <li><span class="award-icon">🥈</span> Silver Medal for securing 2nd rank in B.Tech Mechanical Engineering, AMU</li>
+      <li><span class="award-icon">🏆</span> University Merit Financial Award for academic excellence</li>
+    </ul>
+
+    <div class="section-title" style="margin-top: 2rem;">Leadership & Activities</div>
+    <div class="activity-item">
+      <h4>Chairperson – ASME Student Section (2024–25)</h4>
+      <p>American Society of Mechanical Engineers, AMU. Organized workshops on AutoCAD, Abaqus, SolidWorks, and MATLAB for students.</p>
+    </div>
+    <div class="activity-item">
+      <h4>Member – Autonomous Underwater Vehicle (AUV) Student Section (2023–24)</h4>
+      <p>Contributed to the design and development of an autonomous underwater vehicle. Organized a national-level AUV competition.</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="section-title">Contact & Address</div>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <div class="c-icon">✉️</div>
+        <div>
+          <h4>Email</h4>
+          <a href="mailto:gk1450@myamu.ac.in">gk1450@myamu.ac.in</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="c-icon">📞</div>
+        <div>
+          <h4>Phone</h4>
+          <p>+91-9149311551</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="c-icon">📍</div>
+        <div>
+          <h4>Address</h4>
+          <p>Aligarh, Uttar Pradesh, India</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="c-icon">🔗</div>
+        <div>
+          <h4>LinkedIn</h4>
+          <a href="https://linkedin.com/in/mohd-ravish-608050225" target="_blank">linkedin.com/in/mohd-ravish</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <p>© 2025 <span>Mohd Ravish</span> &nbsp;·&nbsp; ZHCET, Aligarh Muslim University &nbsp;·&nbsp; All rights reserved</p>
+</footer>
+
+</body>
+</html>
